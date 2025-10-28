@@ -1,6 +1,7 @@
 // ===============================
 //  Smart RSS Backend with Cache + Image Previews
 // ===============================
+import path from "path";
 import express from "express";
 import cors from "cors";
 import RSSParser from "rss-parser";
@@ -249,7 +250,6 @@ app.post("/api/articles/:id/bookmark", (req, res) => {
 });
 
 import fs from "fs";
-import path from "path";
 import { fileURLToPath } from "url";
 import { parseStringPromise, Builder } from "xml2js";
 
@@ -309,7 +309,6 @@ app.post("/api/feeds/import", async (req, res) => {
   }
 });
 
-import path from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
