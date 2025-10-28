@@ -309,8 +309,6 @@ app.post("/api/feeds/import", async (req, res) => {
   }
 });
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Serve built frontend
 app.use(express.static(path.join(__dirname, "public")));
