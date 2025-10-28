@@ -27,7 +27,24 @@ const parser = new RSSParser({
   },
 });
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173", // local dev
+  /\.vercel\.app$/,        // any Vercel deployment
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      const allowed = allowedOrigins.some((o) =>
+        o instanceof RegExp ? o.test(origin) : o === origin
+      );
+      callback(allowed ? null : new Error("Not allowed by CORS"), allowed);
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // ---------------------------------------------------------
